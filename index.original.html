@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>胡如萍｜个人作品集</title>
+<style>
+:root{--bg:#ecece8;--paper:#f5f5f1;--ink:#171717;--muted:#747474;--line:rgba(20,20,20,.15);--dark:#171717;--white:#f5f5f1;--accent:#ff5a43}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}
+/* 顶部 */
+.nav{position:fixed;z-index:1000;top:18px;left:4vw;right:4vw;height:52px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(255,255,255,.55);background:rgba(245,245,241,.65);backdrop-filter:blur(18px);border-radius:18px}.logo{font-size:11px;letter-spacing:.08em}.nav-links{display:flex;gap:25px;font-size:11px}.nav-links a{opacity:.7;transition:.3s}.nav-links a:hover{opacity:1}
+/* 开场 */
+.intro{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;pointer-events:none;animation:introOut 1s 2.35s forwards}.intro-line{position:absolute;width:min(72vw,900px);height:1px;background:#171717;transform:scaleX(0);transform-origin:left;animation:lineGrow 1.05s .2s cubic-bezier(.77,0,.18,1) forwards}.intro-title{font-size:clamp(28px,5vw,70px);font-weight:300;letter-spacing:.12em;opacity:0;animation:titleIn 1s 1s forwards}.intro-sub{position:absolute;bottom:10vh;font-size:10px;letter-spacing:.18em;opacity:0;animation:titleIn .8s 1.35s forwards}@keyframes lineGrow{to{transform:scaleX(1)}}@keyframes titleIn{to{opacity:1;transform:translateY(0)}}@keyframes introOut{to{opacity:0;visibility:hidden}}
+/* 首页 */
+.hero{min-height:100vh;padding:145px 6vw 70px;display:grid;grid-template-columns:.9fr 1.1fr;gap:6vw;align-items:center;position:relative}.eyebrow{font-size:10px;letter-spacing:.16em;color:#777}.hero h1{.hero h1{
+    font-family:
+        "Noto Serif SC",
+        "Songti SC",
+        "STSong",
+        serif;
+
+    font-weight:400;
+
+    /* 杂志标题最重要的是字距 */
+    letter-spacing:-0.045em;
+
+    /* 两行之间紧一点 */
+    line-height:0.9;
+
+    font-size:clamp(68px,7.5vw,125px);
+}}.hero p{max-width:470px;font-size:13px;line-height:2;color:#5f5f5f}.hero-meta{display:flex;gap:22px;margin-top:38px;font-size:10px;letter-spacing:.12em}.hero-art{height:min(68vh,680px);border-radius:42% 58% 45% 55%/48% 43% 57% 52%;overflow:hidden;background:#d9d9d5;animation:blob 12s ease-in-out infinite;transform:scale(1);transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .55s ease;will-change:transform}/* =========================
+   首屏右侧 Blob + 多重线圈
+   ========================= */
+
+.hero-art{
+    position:relative;
+    height:min(68vh,680px);
+
+    /* 中间的灰色不规则形状 */
+    border-radius:42% 58% 45% 55% / 48% 43% 57% 52%;
+    background:#d9d9d5;
+
+    /* 非常重要：
+       原来是 hidden，现在必须改成 visible，
+       不然外面的线圈会被裁掉 */
+    overflow:visible;
+
+    transform:scale(1);
+    transition:transform .8s cubic-bezier(.22,1,.36,1);
+
+    /* Blob 自己缓慢变化 */
+    animation:blob 7s ease-in-out infinite;
+
+    will-change:transform;
+}
+
+
+/* =========================
+   中间图片
+   ========================= */
+
+.hero-art img{
+    width:100%;
+    height:100%;
+    display:block;
+
+    object-fit:cover;
+
+    border-radius:inherit;
+
+    filter:grayscale(1);
+
+    transition:
+        filter .8s ease,
+        transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+
+/* 鼠标放到主体上时 */
+.hero-art:hover{
+    transform:scale(1.12);
+}
+
+.hero-art:hover img{
+    filter:grayscale(0);
+    transform:scale(1.04);
+}
+
+
+/* =========================
+   第一层线圈
+   ========================= */
+
+.hero-ring.ring-1{
+    position:absolute;
+    z-index:-1;
+
+    left:-22px;
+    top:-18px;
+
+    width:calc(100% + 44px);
+    height:calc(100% + 36px);
+
+    border:1px solid rgba(20,20,20,.18);
+
+    border-radius:
+        48% 52% 46% 54% /
+        52% 44% 56% 48%;
+
+    pointer-events:none;
+
+    animation:ringOne 6s ease-in-out infinite;
+}
+
+
+/* =========================
+   第二层线圈
+   ========================= */
+
+.hero-ring.ring-2{
+    position:absolute;
+    z-index:-2;
+
+    left:-48px;
+    top:-40px;
+
+    width:calc(100% + 96px);
+    height:calc(100% + 80px);
+
+    border:1px solid rgba(20,20,20,.11);
+
+    border-radius:
+        52% 48% 54% 46% /
+        46% 56% 44% 54%;
+
+    pointer-events:none;
+
+    animation:ringTwo 8s ease-in-out infinite;
+}
+
+
+/* =========================
+   第三层线圈
+   最外面，最淡
+   ========================= */
+
+.hero-ring.ring-3{
+    position:absolute;
+    z-index:-3;
+
+    left:-78px;
+    top:-64px;
+
+    width:calc(100% + 156px);
+    height:calc(100% + 128px);
+
+    border:1px solid rgba(20,20,20,.055);
+
+    border-radius:
+        45% 55% 50% 50% /
+        55% 45% 52% 48%;
+
+    pointer-events:none;
+
+    animation:ringThree 10s ease-in-out infinite;
+}
+
+
+/* =========================
+   Blob 本身的变化
+   ========================= */
+
+@keyframes blob{
+
+    0%,100%{
+        border-radius:
+            42% 58% 45% 55% /
+            48% 43% 57% 52%;
+    }
+
+    50%{
+        border-radius:
+            56% 44% 58% 42% /
+            40% 58% 44% 56%;
+    }
+
+}
+
+
+/* =========================
+   第一层线圈呼吸
+   ========================= */
+
+@keyframes ringOne{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+
+}
+
+
+/* =========================
+   第二层线圈呼吸
+   ========================= */
+
+@keyframes ringTwo{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.12);
+    }
+
+}
+
+
+/* =========================
+   第三层线圈呼吸
+   ========================= */
+
+@keyframes ringThree{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.16);
+    }
+
+}.scroll-cue{position:absolute;right:4.5vw;bottom:32px;width:56px;height:56px}.scroll-cue:before,.scroll-cue:after{content:"";position:absolute;background:#171717}.scroll-cue:before{width:1px;height:56px;right:0}.scroll-cue:after{height:1px;width:56px;right:0;bottom:0}.scroll-cue i{position:absolute;width:5px;height:5px;border-radius:50%;background:#171717;right:8px;bottom:7px;animation:breathe 2.2s infinite}@keyframes breathe{0%,100%{opacity:.3;transform:scale(.7)}50%{opacity:1;transform:scale(1.5)}}
+/* 关于我 */
+.about{padding:130px 6vw 150px;background:#f4f4f0;display:grid;grid-template-columns:300px 1fr;gap:8vw}.profile{position:sticky;top:105px;height:max-content}.avatar{width:185px;height:185px;margin:25px 0;border-radius:50% 50% 62% 38%/45% 40% 60% 55%;overflow:hidden;background:#ddd;animation:blob2 10s ease-in-out infinite}.avatar img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:.7s}.avatar:hover img{filter:grayscale(0)}@keyframes blob2{0%,100%{border-radius:50% 50% 62% 38%/45% 40% 60% 55%}50%{border-radius:38% 62% 45% 55%/60% 46% 54% 40%}}.profile h2{font-size:30px;font-weight:400;margin:0 0 12px}.profile>p{font-size:12px;line-height:1.9;color:#666;max-width:285px}.skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:25px}.skill{padding:8px 11px;border:1px solid var(--line);border-radius:30px;font-size:10px;transition:.35s}.skill:hover{background:#171717;color:#fff;border-color:#171717}.timeline{position:relative;padding-left:34px}.timeline:before{content:"";position:absolute;left:4px;top:5px;bottom:5px;width:1px;background:var(--line)}.time-card{position:relative;margin-bottom:18px;padding:23px 26px;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.43);backdrop-filter:blur(18px);border-radius:19px;box-shadow:0 10px 30px rgba(0,0,0,.04);transition:.5s cubic-bezier(.2,.8,.2,1)}.time-card:before{content:"";position:absolute;left:-34px;top:29px;width:7px;height:7px;border-radius:50%;background:#aaa;border:2px solid var(--paper);transition:.35s}.time-card:hover{transform:translateY(-7px) rotateX(2deg);background:rgba(218,218,215,.68);box-shadow:0 20px 45px rgba(0,0,0,.1)}.time-card:hover:before{background:var(--accent);transform:scale(1.35)}.time-date{font-size:9px;color:#888;letter-spacing:.1em}.time-card h3{font-size:16px;font-weight:500;margin:10px 0}.time-card p{font-size:11px;line-height:1.9;color:#666;margin:0}
+/* 作品目录 */
+.works{min-height:100vh;padding:100px 5vw;background:#181818;color:#f3f3ef;display:grid;grid-template-columns:1.15fr .85fr;gap:5vw;overflow:hidden}.carousel-wrap{min-height:78vh;display:flex;align-items:center;justify-content:center;position:relative}.carousel{width:min(62vw,700px);height:min(62vw,700px);border:1px solid rgba(255,255,255,.14);border-radius:50%;position:relative;transition:transform .8s cubic-bezier(.2,.8,.2,1)}.work-card{position:absolute;left:50%;top:50%;width:clamp(145px,17vw,220px);aspect-ratio:.84;transform:translate(-50%,-50%) rotate(var(--r)) translateY(calc(-1 * min(28vw,305px))) rotate(calc(-1 * var(--r)));border-radius:19px;overflow:visible;background:#ddd;cursor:pointer;transition:filter .6s,box-shadow .5s}.work-card img{width:100%;height:100%;border-radius:19px;object-fit:cover;filter:grayscale(1);transition:.7s}.work-card:hover img{filter:grayscale(0);transform:scale(1.05)}.work-card:hover{box-shadow:0 25px 60px rgba(0,0,0,.45)}.work-name{position:absolute;left:calc(100% + 13px);top:50%;transform:translateY(-50%);white-space:nowrap;font-size:10px;letter-spacing:.08em}.works-copy{align-self:center;max-width:430px}.works-copy h2{font-size:clamp(70px,10vw,150px);font-weight:300;letter-spacing:-.08em;margin:18px 0}.works-copy p{font-size:12px;line-height:2;color:#aaa}.works-note{margin-top:38px;font-size:10px;color:#fff;letter-spacing:.12em}
+/* 旺崽项目 */
+.case{padding:135px 5vw 150px;background:#f4f4f0}.case-intro{display:grid;grid-template-columns:.7fr 1.3fr;gap:8vw;align-items:end;margin-bottom:55px}.case-intro h2{font-size:clamp(70px,10vw,145px);line-height:.78;font-weight:300;letter-spacing:-.08em;margin:15px 0}.case-intro p{max-width:650px;font-size:13px;line-height:2;color:#555}.case-visual{display:grid;grid-template-columns:1.5fr .5fr;gap:17px}.case-main{height:610px}.case-side{display:grid;grid-template-rows:1fr 1fr;gap:17px}.visual{position:relative;border-radius:29px;overflow:hidden;background:#ddd}.visual img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:.8s}.visual:hover img{filter:grayscale(0);transform:scale(1.05)}.caption{position:absolute;left:20px;bottom:17px;color:#fff;font-size:10px;text-shadow:0 2px 12px #000;letter-spacing:.1em}
+.series-title{display:flex;justify-content:space-between;align-items:end;margin:90px 0 28px}.series-title h3,.process-title h3,.market-title h3{font-size:38px;font-weight:300;margin:8px 0}.series-title p,.market-title p{font-size:11px;line-height:1.8;color:#777;max-width:360px}.series-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.series-card{position:relative;aspect-ratio:.82;border-radius:23px;overflow:hidden;background:#ddd;cursor:pointer}.series-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:.8s}.series-card:hover img{filter:grayscale(0);transform:scale(1.05)}.series-info{position:absolute;left:0;right:0;bottom:0;padding:55px 17px 17px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.82))}.series-info b{font-size:12px;letter-spacing:.09em}.series-info span{display:block;margin-top:6px;font-size:9px;opacity:.72}
+/* IP 到产品：流程+证据 */
+.process{margin-top:100px;display:grid;grid-template-columns:.65fr 1.35fr;gap:7vw}.process-title p{max-width:300px;font-size:11px;line-height:1.8;color:#777}.process-list{border-top:1px solid var(--line)}.process-item{padding:24px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:52px 1fr;gap:18px;cursor:pointer;transition:.4s}.process-item:hover{padding-left:10px}.process-num{font-size:9px;color:#999}.process-item h4{margin:0 0 6px;font-size:17px;font-weight:500}.process-item p{margin:0;font-size:11px;line-height:1.8;color:#666}.process-evidence{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px}.process-evidence img{width:100%;height:110px;object-fit:cover;border-radius:12px;filter:grayscale(1);transition:.5s}.process-item:hover .process-evidence img{filter:grayscale(0)}
+/* 真实落地 */
+.market{margin-top:105px}.market-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.market-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:17px}.market-main{height:480px}.market-side{display:grid;grid-template-rows:1fr 1fr;gap:17px}.social-float{position:absolute;right:25px;top:25px;width:190px;padding:15px;background:rgba(250,250,248,.88);color:#222;border-radius:16px;box-shadow:0 18px 45px rgba(0,0,0,.18);transform:rotate(2deg);animation:float 5s ease-in-out infinite}.social-float:nth-child(2){right:auto;left:25px;top:auto;bottom:25px;transform:rotate(-3deg);animation-delay:-2s}.social-float b{font-size:10px}.social-float p{font-size:9px;line-height:1.6;color:#666;margin:7px 0}.social-float span{font-size:8px;color:#999}@keyframes float{0%,100%{translate:0 0}50%{translate:0 -9px}}
+/* 其他作品 */
+.other{padding:135px 5vw 150px;background:#e7e7e3}.other-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:55px}.other-head h2{font-size:clamp(70px,10vw,145px);font-weight:300;letter-spacing:-.08em;margin:12px 0}.other-head p{max-width:400px;font-size:12px;line-height:1.9;color:#666}.other-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:17px}.other-card{position:relative;min-height:460px;border-radius:28px;overflow:hidden;cursor:pointer;background:#d5d5d2}.other-card:nth-child(1){grid-column:span 7}.other-card:nth-child(2){grid-column:span 5;margin-top:75px}.other-card:nth-child(3){grid-column:span 5}.other-card:nth-child(4){grid-column:span 7;margin-top:-75px}.other-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:.8s}.other-card:hover img{filter:grayscale(0);transform:scale(1.05)}.other-info{position:absolute;left:0;right:0;bottom:0;padding:70px 24px 23px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.83))}.other-info small{font-size:9px;letter-spacing:.16em;opacity:.7}.other-info h3{font-size:26px;font-weight:400;margin:8px 0}.other-info p{font-size:11px;line-height:1.7;max-width:500px;opacity:.8}.other-arrow{position:absolute;right:20px;top:20px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.18);transition:.4s}.other-card:hover .other-arrow{transform:rotate(45deg) scale(1.08)}
+/* 联系 */
+.contact{min-height:55vh;padding:120px 5vw;display:flex;align-items:center;justify-content:space-between}.contact h2{font-size:clamp(55px,9vw,120px);font-weight:300;line-height:.9;letter-spacing:-.07em;margin:20px 0}.contact-info{font-size:11px;line-height:2;color:#666}
+
+/* 旺崽角色系列：项目内部子页面 */
+.series-modal{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;padding:5vh 4vw;opacity:0;visibility:hidden;pointer-events:none;transition:.45s ease}.series-modal.is-open{opacity:1;visibility:visible;pointer-events:auto}.series-modal-backdrop{position:absolute;inset:0;background:rgba(10,10,10,.68);backdrop-filter:blur(18px)}.series-modal-panel{position:relative;width:min(1400px,94vw);height:min(88vh,920px);overflow:hidden;border:1px solid rgba(255,255,255,.28);border-radius:30px;background:#151515;box-shadow:0 35px 100px rgba(0,0,0,.35);transform:translateY(30px) scale(.97);transition:.5s cubic-bezier(.2,.8,.2,1)}.series-modal.is-open .series-modal-panel{transform:none}.series-modal-head{position:absolute;z-index:2;left:0;right:0;top:0;height:76px;padding:0 25px;display:flex;align-items:center;justify-content:space-between;color:#f5f5f1;background:linear-gradient(rgba(15,15,15,.92),rgba(15,15,15,0));pointer-events:none}.series-modal-head strong{display:block;margin-top:4px;font-size:20px;font-weight:400;letter-spacing:.08em}.series-modal-close{pointer-events:auto;width:40px;height:40px;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:25px;line-height:1;cursor:pointer;transition:.3s}.series-modal-close:hover{background:#fff;color:#171717;transform:rotate(90deg)}#seriesFrame{width:100%;height:100%;border:0;display:block;background:#151515}.series-modal-open{overflow:hidden}
+/* 响应式 */
+@media(max-width:850px){.nav{left:3vw;right:3vw}.nav-links{gap:12px}.hero,.about,.works,.case-intro,.case-visual,.process,.market-grid{grid-template-columns:1fr}.hero{padding-top:120px}.hero-art{height:55vh}.profile{position:relative;top:auto}.about{gap:55px}.timeline{padding-left:28px}.time-card{padding:20px}.time-card:before{left:-28px}.works{padding-top:100px}.carousel{width:85vw;height:85vw}.work-card{width:125px}.work-name{display:none}.works-copy{padding-bottom:70px}.case-main{height:450px}.case-side{height:500px}.series-grid{grid-template-columns:1fr 1fr}.process-evidence{grid-template-columns:1fr 1fr}.market-side{height:450px}.other-head{display:block}.other-grid{display:block}.other-card,.other-card:nth-child(2),.other-card:nth-child(4){margin:0 0 17px;min-height:380px}.contact{display:block}.contact-info{margin-top:50px}}
+
+/* ===== 2026-09-14 layout refinement ===== */
+.hero{grid-template-columns:1.05fr .95fr;gap:4vw}
+.hero h1{width:max-content;max-width:none;line-height:.96;letter-spacing:-.055em}
+.timeline>.eyebrow{margin-bottom:26px}
+.time-card{margin-bottom:22px}
+.case-intro{grid-template-columns:.72fr 1.28fr;gap:7vw}
+.case-intro h2{font-size:clamp(72px,8.6vw,122px);line-height:.96;letter-spacing:-.045em;margin:18px 0 24px}
+.case-intro>div:first-child{padding-right:20px}
+.series-title{margin-top:105px;margin-bottom:30px}
+.series-title h3{font-size:34px;line-height:1.2;margin:10px 0 0}
+.series-info span,.other-info small{display:none}
+.process{margin-top:120px;grid-template-columns:.72fr 1.28fr;gap:8vw}
+.process-title h3{font-size:52px;line-height:1.08;letter-spacing:-.045em;margin:12px 0 22px}
+.process-title p{max-width:330px}
+.market-title h3{font-size:40px;line-height:1.15;letter-spacing:-.035em}
+.market{margin-top:120px}
+.market-main{overflow:visible!important;background:transparent}
+.market-main>img{display:block;border-radius:29px}
+.social-float{z-index:5;width:210px;padding:17px 18px;background:rgba(248,248,245,.94);border:1px solid rgba(255,255,255,.9);border-radius:18px;box-shadow:0 18px 45px rgba(0,0,0,.14);backdrop-filter:blur(16px);transform:none;animation:floatClean 5s ease-in-out infinite}
+.social-float:nth-child(2){right:auto;left:auto;top:auto;bottom:32px;left:32px;transform:none;animation-delay:-2.2s}
+.social-float p{margin:0;font-size:10px;line-height:1.8;color:#555}
+@keyframes floatClean{0%,100%{translate:0 0}50%{translate:0 -7px}}
+.other{padding-top:120px}
+.other-head{margin-bottom:42px}
+.other-head h2{font-size:clamp(64px,8vw,110px)}
+.other-grid{grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch}
+.other-card,.other-card:nth-child(1),.other-card:nth-child(2),.other-card:nth-child(3),.other-card:nth-child(4){grid-column:auto;margin:0;min-height:390px;height:390px}
+.other-info{padding:52px 20px 20px}
+.other-info h3{font-size:22px;margin:0}
+.other-info p{font-size:10px;line-height:1.7;margin-top:7px}
+.other-arrow{width:38px;height:38px;right:16px;top:16px}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.hero h1{width:auto;max-width:100%;white-space:normal}.other-grid{grid-template-columns:1fr 1fr}.other-card,.other-card:nth-child(1),.other-card:nth-child(2),.other-card:nth-child(3),.other-card:nth-child(4){min-height:330px;height:330px}.process-title h3{font-size:42px}}
+
+/* 全站图片默认保持彩色 */
+img {
+    filter: grayscale(0) !important;
+}
+
+</style></style></head>
+<body>
+<div class="intro"><div class="intro-line"></div><div class="intro-title">个人作品集</div><div class="intro-sub">视觉 / IP / 潮玩 / 产品</div></div>
+<header class="nav"><div class="logo">胡如萍 / 个人作品集</div><nav class="nav-links"><a href="#about">关于我</a><a href="#works">作品目录</a><a href="#wangzai">旺崽星球</a><a href="#other">其他作品</a><a href="#contact">联系方式</a></nav></header>
+<main>
+<section class="hero" id="home"><div><div class="eyebrow">视觉 / IP / 潮玩 / 产品</div><h1>让 IP<br>真正成为产品</h1><p>以角色设计为起点，连接 IP 企划、潮玩产品、包装视觉与生产落地，让原创形象从视觉概念走向真实产品。</p><div class="hero-meta"><span>胡如萍</span><span>视觉传达设计本科</span><span>2+ 年经验</span></div></div><div class="hero-art">
+
+    <!-- 三层外部线圈 -->
+    <span class="hero-ring ring-1"></span>
+    <span class="hero-ring ring-2"></span>
+    <span class="hero-ring ring-3"></span>
+
+    <!-- 中间主体 -->
+    <img src="images/wangzai-hero.jpg" alt="旺崽星球主视觉">
+
+</div><div class="scroll-cue"><i></i></div></section>
+<section class="about" id="about"><aside class="profile"><div class="eyebrow">01 / 关于我</div><div class="avatar"><img src="images/avatar.jpg" alt="胡如萍"></div><h2>胡如萍</h2><p>视觉传达设计本科毕业，拥有 2+ 年潮玩 IP 与文创产品设计经验。关注 IP 角色、产品开发与商业落地之间的关系，希望让设计从视觉概念真正进入产品与市场。</p><div class="skills"><span class="skill">Photoshop</span><span class="skill">Illustrator</span><span class="skill">Procreate</span><span class="skill">Figma</span><span class="skill">AI 辅助设计</span><span class="skill">IP 企划</span><span class="skill">角色设定</span><span class="skill">潮玩盲盒</span><span class="skill">文创衍生</span><span class="skill">打样落地</span><span class="skill">包装视觉</span></div></aside>
+<div class="timeline"><div class="eyebrow">教育经历 / 工作经历 / 项目经验</div><article class="time-card"><div class="time-date">2023.09 — 2025.02</div><h3>视觉传达设计本科 · 教育经历</h3><p>视觉传达设计专业背景，建立平面视觉、品牌、包装与文创设计基础，并持续向 IP 角色与产品开发方向延伸。</p></article><article class="time-card"><div class="time-date">2023.09 — 2025.02</div><h3>广丰非遗文创设计工作室 · 文创 IP 平面设计师</h3><p>独立承接 IP 全链路设计，参与项目立项与概念策划；完成角色形象、标准三视图、表情动作体系搭建，输出 IP 视觉规范。负责产品包装、文创周边、电商主图/详情页、营销海报等视觉设计，并对接三轮产品打样迭代，完成材质优化与多轮尺寸校准，剔除无法量产的设计方案并优化适配量产工艺。</p></article><article class="time-card"><div class="time-date">2025.07 — 2026.04</div><h3>深圳旺崽文化创意科技有限公司 · 产品岗</h3><p>开展周边衍生品方案及产品包装视觉设计；独立负责核心 IP 视觉前期开发，完成搪胶、PVC 品类主 IP 形象设定、三视图、表情体系与造型规范输出。项目覆盖形象策划、效果图绘制、衍生产品延展等全前期设计工作，对接供应商生产，全程跟进监制落地。</p></article><article class="time-card"><div class="time-date">2025.07 — 2026.04</div><h3>《宠物潮玩 IP 设计项目》</h3><p>对标市面热门猫狗宠物形象，打造双系列 PVC 盲盒潮玩。完成 28 款宠物 IP 形象设计，采用 6 常规 + 1 隐藏款盲盒配比模式控制生产成本；参与 5 轮打样迭代，优化平面图、白膜细节、人物姿态与产品尺寸，负责插画包装与刀模模板，并参与展会展销、收集用户反馈。</p></article><article class="time-card"><div class="time-date">2023.09 — 2025.02</div><h3>《文旅设计项目》</h3><p>结合本土地域文化与城市特色，打造年轻化文旅 IP 视觉体系，匹配 15–30 岁年轻受众。负责 IP 创意策划、形象设定与视觉迭代等前期设计，方案贴合实际落地场景并完成应用；同步完成系列周边衍生品创意与视觉延展。</p></article></div></section>
+<section class="works" id="works"><div class="carousel-wrap"><div class="carousel" id="carousel"><a class="work-card" style="--r:0deg" href="#wangzai"><img src="images/work-01.jpg" alt="旺崽星球"><div class="work-name">旺崽星球</div></a><a class="work-card" style="--r:60deg" href="other-travel.html"><img src="images/work-02.jpg" alt="文旅 IP"><div class="work-name">文旅 IP</div></a><a class="work-card" style="--r:120deg" href="other-pet.html"><img src="images/work-03.jpg" alt="宠物潮玩"><div class="work-name">宠物潮玩</div></a><a class="work-card" style="--r:180deg" href="other-packaging.html"><img src="images/work-04.jpg" alt="包装视觉"><div class="work-name">包装视觉</div></a><a class="work-card" style="--r:240deg" href="other-cultural.html"><img src="images/work-05.jpg" alt="文创衍生"><div class="work-name">文创衍生</div></a><a class="work-card" style="--r:300deg" href="other-exhibition.html"><img src="images/work-06.jpg" alt="展会与市场"><div class="work-name">展会与市场</div></a></div></div><div class="works-copy"><div class="eyebrow">02 / 作品目录</div><h2>作品</h2><p>从 IP 企划、角色设定出发，延伸至潮玩产品、包装视觉、文创衍生与真实生产落地。作品记录的不只是最终视觉，也包括从概念到产品、再到市场反馈的完整过程。</p><div class="works-note">滚动旋转 / 点击进入项目</div></div></section>
+<section class="case" id="wangzai"><div class="case-intro"><div><div class="eyebrow">核心项目 / 01</div><h2>旺崽<br>星球</h2></div><div><p><b>开盒即救赎，养成即新生。</b><br>以宠物陪伴为情感核心，将原创 IP、潮玩盲盒与动物保护公益结合，让潮玩成为连接人与陪伴的载体。</p><p>项目共完成 28 个角色，划分为 FIRST ROB、FIRST SMILE、FIRST TOUCH、FIRST WALK 四个系列。每售出一盒捐赠 1 元至动物保护事业。</p></div></div><div class="case-visual"><div class="visual case-main"><img src="images/wangzai-hero.jpg" alt="旺崽星球"></div><div class="case-side"><div class="visual"><img src="images/real-product-main.jpg" alt="产品实物"></div><div class="visual"><img src="images/packaging-01.jpg" alt="包装"></div></div></div>
+<div class="series-title"><div><div class="eyebrow">角色体系</div><h3>四个角色系列</h3></div><p>四个系列横向平排展示。点击后在当前项目中展开对应系列，集中呈现 7–8 个盲盒角色。</p></div><div class="series-grid"><a class="series-card" href="first-rob.html"><img src="images/first-rob.png" alt="FIRST ROB"><div class="series-info"><b>FIRST ROB</b><span>角色系列 · 01</span></div></a><a class="series-card" href="first-smile.html"><img src="images/first-smile.png" alt="FIRST SMILE"><div class="series-info"><b>FIRST SMILE</b><span>角色系列 · 02</span></div></a><a class="series-card" href="first-touch.html"><img src="images/first-touch.png" alt="FIRST TOUCH"><div class="series-info"><b>FIRST TOUCH</b><span>角色系列 · 03</span></div></a><a class="series-card" href="first-walk.html"><img src="images/first-walk.png" alt="FIRST WALK"><div class="series-info"><b>FIRST WALK</b><span>角色系列 · 04</span></div></a></div>
+<div class="process"><div class="process-title"><div class="eyebrow">项目方法</div><h3>从 IP 到产品</h3><p>把你真正参与的设计与落地工作转化为可被观看的证据，而不是只用一条文字流程概括。</p></div><div class="process-list"><div class="process-item"><div class="process-num">01</div><div><h4>概念规划</h4><p>围绕宠物陪伴、情感价值与公益理念建立产品立意，明确 IP 的视觉方向与商业化目标。</p><div class="process-evidence"><img src="images/concept-01.jpg"><img src="images/concept-02.jpg"><img src="images/concept-03.jpg"></div></div></div><div class="process-item"><div class="process-num">02</div><div><h4>角色开发</h4><p>完成角色形象、标准三视图、表情动作体系与造型规范，建立 28 个角色的系列化差异。</p><div class="process-evidence"><img src="images/character-turnaround.jpg"><img src="images/character-expression.jpg"><img src="images/character-design.jpg"></div></div></div><div class="process-item"><div class="process-num">03</div><div><h4>产品设计与打样</h4><p>参与产品平面设计、白膜确认及姿态与尺寸优化，历经 5 轮迭代，使角色适配真实量产标准。</p><div class="process-evidence"><img src="images/sample-01.jpg"><img src="images/sample-02.jpg"><img src="images/sample-03.jpg"></div></div></div><div class="process-item"><div class="process-num">04</div><div><h4>材质、工艺与量产落地</h4><p>以设计师身份与建模及工厂团队协同，参与选色、材质确认与工艺调整，确保设计意图在量产中准确落地。</p><div class="process-evidence"><img src="images/production-01.jpg"><img src="images/production-02.jpg"><img src="images/production-03.jpg"></div></div></div><div class="process-item"><div class="process-num">05</div><div><h4>包装与商业化延展</h4><p>完成插画包装、刀模模板、角色卡及系列衍生视觉，并结合实际产品场景进行延展。</p><div class="process-evidence"><img src="images/packaging-01.jpg"><img src="images/packaging-02.jpg"><img src="images/packaging-03.jpg"></div></div></div></div></div>
+<div class="market"><div class="market-title"><div><div class="eyebrow">设计与真实落地</div><h3>从设计走向真实市场</h3></div><p>产品实物、产品细节、展会现场，以及真实用户购买后的分享，共同构成市场反馈。</p></div><div class="market-grid"><div class="visual market-main"><img src="images/real-product-02.jpg" alt="产品实物"><div class="social-float"><p>真实购买后的开箱、摆拍与使用场景，可替换为授权用户晒单截图。</p></div><div class="social-float"><p>通过用户反馈观察角色受欢迎程度，并为后续产品迭代提供参考。</p></div></div><div class="market-side"><div class="visual"><img src="images/real-product-03.jpg" alt="产品细节"></div><div class="visual"><img src="images/exhibition-01.jpg" alt="展会现场"></div></div></div></div>
+</section>
+<div class="series-modal" id="seriesModal" aria-hidden="true">
+  <div class="series-modal-backdrop" data-close-series></div>
+  <div class="series-modal-panel">
+    <div class="series-modal-head"><div><span class="eyebrow">旺崽星球 / 角色系列</span><strong id="seriesModalTitle">FIRST ROB</strong></div><button type="button" class="series-modal-close" data-close-series aria-label="关闭">×</button></div>
+    <iframe id="seriesFrame" title="角色系列内容" loading="lazy"></iframe>
+  </div>
+</div>
+
+<section class="other" id="other"><div class="other-head"><div><div class="eyebrow">03 / 其他展示</div><h2>其他作品</h2></div><p>除核心 IP 项目外，我也参与文旅 IP、宠物潮玩、包装视觉与文创衍生等项目。每个项目都保留独立子页面，用于完整展示过程与成果。</p></div><div class="other-grid"><a class="other-card" href="other-travel.html"><img src="images/work-02.jpg"><div class="other-arrow">↗</div><div class="other-info"><small>项目 01 / 文旅 IP</small><h3>文旅 IP 设计</h3><p>结合地域文化与城市特色，打造年轻化文旅 IP 视觉体系及系列周边延展。</p></div></a><a class="other-card" href="other-pet.html"><img src="images/work-03.jpg"><div class="other-arrow">↗</div><div class="other-info"><small>项目 02 / 宠物潮玩</small><h3>宠物潮玩 IP</h3><p>完成宠物角色、表情动作及 PVC 盲盒产品视觉开发，并参与多轮打样迭代。</p></div></a><a class="other-card" href="other-packaging.html"><img src="images/work-04.jpg"><div class="other-arrow">↗</div><div class="other-info"><small>项目 03 / 包装视觉</small><h3>包装视觉</h3><p>完成插画、版式、刀模及材质工艺适配，让视觉方案服务于实际生产。</p></div></a><a class="other-card" href="other-cultural.html"><img src="images/work-05.jpg"><div class="other-arrow">↗</div><div class="other-info"><small>项目 04 / 文创衍生</small><h3>文创衍生与商业延展</h3><p>围绕 IP 视觉资产进行周边、电商视觉及商业物料延展。</p></div></a></div></section>
+<section class="contact" id="contact"><div><div class="eyebrow">04 / 联系方式</div><h2>让设计<br>真正落地。</h2></div><div class="contact-info">3310383402@qq.com<br>视觉 / IP / 潮玩 / 产品设计</div></section>
+</main>
+<script>
+const carousel=document.getElementById('carousel');let rot=0,locked=false;
+window.addEventListener('wheel',e=>{if(!carousel)return;const r=carousel.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;rot+=e.deltaY*.12;carousel.style.transform=`rotate(${rot}deg)`},{passive:true});
+</script>
+
+<script>
+const seriesModal=document.getElementById('seriesModal');
+const seriesFrame=document.getElementById('seriesFrame');
+const seriesModalTitle=document.getElementById('seriesModalTitle');
+const seriesOpenButtons=document.querySelectorAll('.series-open');
+function openSeries(page,title){seriesFrame.src=page;seriesModalTitle.textContent=title;seriesModal.classList.add('is-open');seriesModal.setAttribute('aria-hidden','false');document.body.classList.add('series-modal-open')}
+function closeSeries(){seriesModal.classList.remove('is-open');seriesModal.setAttribute('aria-hidden','true');document.body.classList.remove('series-modal-open');setTimeout(()=>{seriesFrame.src='about:blank'},450)}
+seriesModal.querySelectorAll('[data-close-series]').forEach(el=>el.addEventListener('click',closeSeries));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&seriesModal.classList.contains('is-open'))closeSeries()});
+</script>
+
+<script>
+(function(){
+  const art=document.querySelector('.hero-art');
+  if(!art) return;
+  art.addEventListener('pointermove',function(e){
+    const r=art.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    const d=Math.min(1,Math.sqrt(x*x+y*y)*1.45);
+    const p=1-d;
+    const scale=1+p*.07;
+    art.style.transform=`translate(${x*-7*p}px,${y*-7*p}px) scale(${scale})`;
+  });
+  art.addEventListener('pointerleave',()=>art.style.transform='scale(1)');
+})();
+</script>
+<script>
+/* =========================
+   首屏 Blob 鼠标互动
+   ========================= */
+
+const heroArt = document.querySelector('.hero-art');
+
+if(heroArt){
+
+    heroArt.addEventListener('mousemove', function(e){
+
+        const rect = heroArt.getBoundingClientRect();
+
+        /* 鼠标在 Blob 中的位置 */
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        /* 鼠标越靠近中心，放大越明显 */
+        const distance = Math.sqrt(x * x + y * y);
+
+        const proximity = Math.max(
+            0,
+            1 - distance * 1.5
+        );
+
+        /* 放大幅度 */
+        const scale = 1 + proximity * 0.10;
+
+        /* 非常轻微的跟随 */
+        const moveX = x * -8 * proximity;
+        const moveY = y * -8 * proximity;
+
+        heroArt.style.transform =
+            `translate(${moveX}px, ${moveY}px) scale(${scale})`;
+    });
+
+
+    /* 鼠标离开以后恢复 */
+    heroArt.addEventListener('mouseleave', function(){
+
+        heroArt.style.transform =
+            'translate(0,0) scale(1)';
+
+    });
+
+}
+</script>
+
+</body></html>
