@@ -1,0 +1,54 @@
+/* Shared crayon-paper art direction; layout and project content stay intact. */
+:root{--ink:#354352;--muted:#65727b;--yellow:#efbd40;--line:#9dabb535;--paper:#fffefb}
+body{background:#faf8f1 url('images/blue-mint-crayon-paper.png') center top/100% auto repeat-y;color:var(--ink)}
+body:before{background:none}
+.station-nav{background:#faf8f1ed;color:#354352;border-color:#d9dfe3}
+.brand b{color:#d99f23}.station-nav nav a:hover{color:#407faf}
+.hero{background:linear-gradient(90deg,#faf8f15c,transparent),url('images/blue-mint-crayon-paper.png') center/cover no-repeat;color:#354352}
+.hero:after{background:linear-gradient(transparent,#faf8f1)}
+.hero .eyebrow,.hero p,.hero-meta{color:#556571}
+.hero h1{color:#416a7d;text-shadow:none}
+.orbit{border-color:#8cabc887}.second{border-color:#baafd780}.coordinate{color:#607b92}.spark{color:#e9b737}
+.planet{box-shadow:0 10px 45px #869bb525}.floating{background:#fffdf3;border:1px solid #ddd3b5;box-shadow:0 8px 22px #60728622}.world .world-note{color:#63747f}
+main>.about,main>.works,main>.case,main>.other{background:transparent}
+.profile,.timeline,.case-intro,.process,.market-title,.other-head,main>.contact{background:#faf8f1ed;border:1px solid #dbe1e5;box-shadow:0 8px 25px #7787960d}
+.works-copy,.series-title{background:#f3f6faed;border:1px solid #dce3eb}
+.case-intro h2{color:#628eae}.work-card,.series-card,.other-card{background:#faf8f1;border-color:#eee8d9}
+.visual,.missing-art{background:#f1f4f9;color:#748494}.process-evidence .missing-art{background:#f0edf7}
+.series-card:nth-child(2n) .missing-art{background:#f8f0e8}
+.other-arrow,.toggle-icon{background:#f8ebc7;color:#816633}
+.time-card:before{background:#faf8f1}.timeline .time-card:hover,.timeline .time-card:focus-within{background:#edf3f8}
+.skills button.skill{background:#faf8f1}.skills button.skill[aria-pressed=true]{background:#f8e6ae}.skill-detail{background:#edf3f8}
+.folder-front{background:linear-gradient(120deg,#e1eaf6,#e8e2f2);border-color:#b4bfd2}.folder-back{background:#cbd8ec}.folder-back:before{background:#cbd8ec}
+.archive-card{box-shadow:0 5px 15px #53657a19}.archive-card-2{background:#fffbed}.folder-shadow{background:#798da12c}
+.top-bar,.breadcrumb,.back-btn,.footer{color:#354b62}.top-bar{background:transparent}.top-bar .breadcrumb,.top-bar .back-btn{color:#354b62}
+.title-area .series-label,.title-area .big-title,.title-area .intro{background-image:linear-gradient(to bottom,#397dad 0%,#397dad 50%,#596372 50%,#596372 100%)}
+.slider-section{background:#f4f6fb8c;border-color:#d6dfe9;box-shadow:0 8px 25px #70829813}.slider-arrow{background:#fff9e8;color:#4b7092}.counter{color:#63758a}
+.character-copy{background:#fffef9;border-color:#e0e4e8;box-shadow:0 6px 20px #71808b0d}.character-name{color:#354352}.character-description,.character-kind{color:#667785}
+.footer{background:transparent;border-color:#dce2e8;color:#455b70}
+body>header:not(.station-nav):not(.top-bar),body>footer{background:transparent;color:#45576b}
+.project-context article{background:#faf8f1ed;border:1px solid #dce2e7}
+.project-heading{color:#384c62}.project-heading>p{color:#647e92}
+.project-gallery{background:transparent;border-color:transparent}
+.color-text{background-image:linear-gradient(to bottom,#397dad 50%,#b78b36 50%)}
+.image-placeholder{background:#f3f3f7;border-color:#cbd5e1}
+.travel-compact .image-placeholder:has(img){background:#fff;box-shadow:0 3px 12px #677c9214}
+.travel-compact .project-heading{border-color:#d7dfe6}
+@media(max-width:700px){body{background-size:auto 850px;background-position:center top}.hero{background-size:auto 100%;background-position:center}.station-nav{background:#faf8f1f2}}
+
+/* Sparse, page-specific decorations instead of a repeated full-page backdrop. */
+body{background:#faf8f1;position:relative;isolation:isolate}
+.hero{background:transparent}
+.hero:after{background:none}
+.paper-scatter{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+.paper-mark{position:absolute;display:block;opacity:.65;transform:rotate(var(--turn));}
+.paper-mark.patch{width:260px;height:230px;background:url('images/blue-mint-crayon-paper.png') left top/768px 512px no-repeat;mix-blend-mode:multiply;mask-image:radial-gradient(ellipse at center,#000 42%,transparent 73%)}
+.paper-mark.patch.mint{background-position:right bottom}
+.paper-mark.star{font-family:Georgia,serif;color:#718b96;font-weight:400;line-height:1}
+@media(max-width:700px){.paper-mark.patch{opacity:.35}.paper-mark.star{opacity:.4}}
+/* Trial: pencil orbit illustration, preserving the irregular decoration layout. */
+.paper-mark.patch,.paper-mark.patch.mint{width:clamp(260px,38vw,530px);height:350px;background:url('images/pencil-planet-orbits.png') center/contain no-repeat;opacity:.68;mask-image:radial-gradient(ellipse at center,#000 48%,transparent 75%)}
+.paper-mark.patch.mint{width:clamp(230px,30vw,420px);height:290px}
+.paper-mark.star{color:#877d6b}
+.hero h1{color:#626b73}
+@media(max-width:700px){.paper-mark.patch,.paper-mark.patch.mint{opacity:.4;width:260px;height:200px}}

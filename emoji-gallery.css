@@ -1,0 +1,30 @@
+.emoji-dialog{width:min(960px,94vw);max-width:94vw;max-height:94vh;padding:22px;border:1px solid #dce1d9;border-radius:18px;background:#faf8f1;color:#354352;overflow:auto}
+.emoji-dialog::backdrop{background:#24334488}.emoji-dialog[open]{animation:emoji-flip .45s ease-out}
+.emoji-close{display:block;margin-left:auto;padding:8px;border:0;background:transparent;color:inherit}
+.emoji-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.emoji-page{flex:0 0 100%;min-width:0;scroll-snap-align:center;padding:0 4px}
+.emoji-page h2{text-align:center;font-size:clamp(20px,3vw,30px);line-height:1.4;margin:12px 0 20px}
+.emoji-art{height:min(58vh,540px);display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;color:#87938e}
+.emoji-art img{width:100%;height:100%;object-fit:contain}
+.emoji-navigation{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:18px}
+.emoji-navigation>button{border:1px solid #d9dfd7;border-radius:50%;background:#fff;width:38px;height:38px;color:inherit}
+.emoji-dots{display:flex;gap:12px}.emoji-dots button{width:12px;height:12px;border:0;border-radius:50%;padding:0;background:#c4ccc8}
+.emoji-dots button.is-active{background:#d9a439;box-shadow:0 0 0 4px #f4e4b7,0 0 12px #ebc66b}
+.work-card.emoji-open{transform:rotateY(180deg);transition:transform .4s}
+@keyframes emoji-flip{from{opacity:0;transform:perspective(1200px) rotateY(-80deg) scale(.75)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.emoji-dialog[open]{animation:none}.work-card.emoji-open{transition:none;transform:none}}
+
+/* Bilingual hierarchy and generous margins around the nine-image matrix. */
+.emoji-page h2{text-align:left;margin:10px 24px 5px;font-size:clamp(20px,2.7vw,28px)}
+.emoji-subtitle{margin:0 24px 18px;font-size:12px;letter-spacing:1.3px;line-height:1.5;color:#83908b}
+.emoji-art.emoji-matrix{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:14px;padding:28px clamp(22px,5vw,64px);height:min(54vh,490px)}
+.emoji-cell{min-width:0;min-height:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f6f7f3;border:1px dashed #d9dfd8;border-radius:8px;font-size:11px;text-align:center;overflow:hidden}
+.emoji-cell img{width:100%;height:100%;object-fit:contain}
+.emoji-navigation>button.has-icon{background:transparent;border:0;padding:0;width:42px;height:42px}
+.emoji-navigation>button.has-icon img{display:block;width:100%;height:100%;object-fit:contain}
+@media(max-width:500px){.emoji-page h2,.emoji-subtitle{margin-left:8px;margin-right:8px}.emoji-art.emoji-matrix{gap:8px;padding:18px;height:48vh}.emoji-cell{font-size:10px}}
+
+.emoji-art.emoji-matrix.emoji-matrix-twelve{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr))}
+@media(max-width:500px){.emoji-art.emoji-matrix.emoji-matrix-twelve{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr))}}
+
+.emoji-art.emoji-matrix.emoji-matrix-four{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}
