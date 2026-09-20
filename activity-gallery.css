@@ -1,0 +1,28 @@
+.activity-dialog{width:min(960px,94vw);max-width:94vw;height:90vh;height:90dvh;max-height:94vh;padding:20px 26px;border:1px solid #dce1d9;border-radius:20px;background:#faf8f1;color:#354352;overflow:hidden}
+.activity-dialog[open]{display:flex;flex-direction:column;animation:activity-flip .45s ease-out}
+.activity-dialog::backdrop{background:#24334488;backdrop-filter:blur(8px)}
+.activity-close{align-self:flex-end;flex-shrink:0;padding:8px;border:0;background:transparent;color:inherit}
+.activity-track{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#c8d2ce transparent}
+.activity-page{height:100%;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:18px;padding:12px 24px 20px}
+.activity-page header{flex-shrink:0}
+.activity-page h2{font-size:clamp(20px,2.7vw,28px);line-height:1.4;margin:0 0 5px;text-align:left}
+.activity-page header p{font-size:12px;letter-spacing:1.2px;line-height:1.5;color:#83908b;margin:0}
+.activity-matrix{flex:1;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:18px;padding:24px;background:#ffffff99;border-radius:14px}
+.activity-cell{margin:0;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;border:1px dashed #d9dfd8;border-radius:9px;background:#f3f5f1;color:#87938e;font-size:12px;overflow:hidden}
+.activity-cell img{width:100%;height:100%;object-fit:contain}
+.activity-navigation{display:flex;flex-shrink:0;justify-content:center;align-items:center;gap:26px;padding-top:12px}
+.activity-navigation>button{width:38px;height:38px;border:1px solid #d9dfd7;border-radius:50%;background:#fff;color:inherit}
+.activity-navigation>button:disabled{opacity:.35;cursor:default}
+.activity-dots{display:flex;gap:12px}
+.activity-dots button{width:12px;height:12px;border:0;border-radius:50%;padding:0;background:#c4ccc8}
+.activity-dots button.is-active{background:#d9a439;box-shadow:0 0 0 4px #f4e4b7,0 0 12px #ebc66b}
+#works .work-card.activity-open{transform:rotateY(180deg)}
+@keyframes activity-flip{from{opacity:0;transform:perspective(1200px) rotateY(-80deg) scale(.75)}to{opacity:1;transform:none}}
+@media(max-width:500px){.activity-dialog{padding:12px}.activity-page{padding:12px 8px;gap:12px}.activity-matrix{padding:14px;gap:10px}.activity-cell{font-size:10px}.activity-page header p{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.activity-dialog[open]{animation:none}#works .work-card.activity-open{transform:none}}
+
+/* Worldbuilding frames follow each source image's natural ratio. */
+.activity-page-natural .activity-matrix{grid-template-rows:none;grid-auto-rows:max-content;align-content:start;align-items:start;overflow-y:auto;overscroll-behavior:contain}
+.activity-page-natural .activity-cell{height:auto;min-height:110px}
+.activity-page-natural .activity-cell:has(img){display:block;min-height:0;background:transparent;border:0}
+.activity-page-natural .activity-cell img{display:block;width:100%;height:auto;object-fit:contain}

@@ -1,0 +1,27 @@
+.exhibition-dialog{width:min(960px,94vw);max-width:94vw;height:90vh;height:90dvh;max-height:94vh;padding:20px 26px;border:1px solid #dce1d9;border-radius:20px;background:#faf8f1;color:#354352;overflow:hidden}
+.exhibition-dialog[open]{display:flex;flex-direction:column;animation:exhibition-flip .45s ease-out}
+.exhibition-dialog::backdrop{background:#24334488;backdrop-filter:blur(8px)}
+.exhibition-close{align-self:flex-end;flex-shrink:0;padding:8px;border:0;background:transparent;color:inherit}
+.exhibition-track{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#c8d2ce transparent}
+.exhibition-page{height:100%;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:18px;padding:12px 24px 20px}
+.exhibition-page header{flex-shrink:0}
+.exhibition-page h2{font-size:clamp(20px,2.7vw,28px);line-height:1.4;margin:0 0 5px;text-align:left}
+.exhibition-page header p{font-size:12px;letter-spacing:1.2px;line-height:1.5;color:#83908b;margin:0}
+.exhibition-matrix{flex:1;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:18px;padding:24px;background:#ffffff99;border-radius:14px}
+.exhibition-cell{margin:0;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;border:1px dashed #d9dfd8;border-radius:9px;background:#f3f5f1;color:#87938e;font-size:12px;overflow:hidden}
+.exhibition-cell img{width:100%;height:100%;object-fit:contain}
+.exhibition-navigation{display:flex;flex-shrink:0;justify-content:center;align-items:center;gap:26px;padding-top:12px}
+.exhibition-navigation>button{width:38px;height:38px;border:1px solid #d9dfd7;border-radius:50%;background:#fff;color:inherit}
+.exhibition-navigation>button:disabled{opacity:.35;cursor:default}
+.exhibition-dots{display:flex;gap:12px}
+.exhibition-dots button{width:12px;height:12px;border:0;border-radius:50%;padding:0;background:#c4ccc8}
+.exhibition-dots button.is-active{background:#d9a439;box-shadow:0 0 0 4px #f4e4b7,0 0 12px #ebc66b}
+#works .work-card.exhibition-open{transform:rotateY(180deg)}
+@keyframes exhibition-flip{from{opacity:0;transform:perspective(1200px) rotateY(-80deg) scale(.75)}to{opacity:1;transform:none}}
+@media(max-width:500px){.exhibition-dialog{padding:12px}.exhibition-page{padding:12px 8px;gap:12px}.exhibition-matrix{padding:14px;gap:10px}.exhibition-cell{font-size:10px}.exhibition-page header p{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.exhibition-dialog[open]{animation:none}#works .work-card.exhibition-open{transform:none}}
+
+
+.exhibition-matrix{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr);background:transparent}
+.exhibition-cell:has(img){border:0;background:transparent}
+@media(max-width:500px){.exhibition-navigation{gap:14px}.exhibition-dots{gap:9px}.exhibition-dots button{width:10px;height:10px}}

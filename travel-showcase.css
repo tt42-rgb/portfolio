@@ -1,0 +1,37 @@
+.travel-compact .project-gallery{max-width:100%}
+.travel-compact .script-title{font-family:"Arial Rounded MT Bold","Microsoft YaHei",sans-serif;font-style:normal;font-weight:900;letter-spacing:.035em;font-size:clamp(32px,5vw,56px);transform:none}
+.travel-compact .project-heading h1{font-size:clamp(30px,4.6vw,54px);letter-spacing:.05em}
+.travel-showcase{display:grid;grid-template-columns:1fr 4fr;gap:18px;align-items:start}
+.travel-selection{height:var(--rail-height,420px);min-height:0}
+.travel-rail{height:100%;overflow-y:auto;overscroll-behavior:contain;scroll-snap-type:y mandatory;scrollbar-width:thin;scrollbar-color:#dab269 transparent;display:flex;flex-direction:column;gap:14px;padding:4px 8px}
+.travel-pick{flex:0 0 calc((100% - 28px)/3);min-height:0;width:100%;padding:8px;border:1px dashed #d7d9d0;border-radius:9px;background:#ffffff80;color:#87938e;font:inherit;font-size:11px;cursor:pointer;scroll-snap-align:center;transform:scale(.94);opacity:.65;transition:transform .25s,opacity .25s,box-shadow .25s,border-color .25s;overflow:hidden}
+.travel-pick.is-selected{transform:scale(1);opacity:1;border:1px solid #dba851;background:#fffaf0;box-shadow:0 3px 10px #b7904130}
+.travel-pick img{display:block;width:100%;height:100%;object-fit:contain}
+.travel-compact .travel-showcase .nine-images{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media(max-width:650px){.travel-showcase{grid-template-columns:1fr 3fr;gap:9px}.travel-compact .travel-showcase .nine-images{gap:7px}.travel-rail{gap:7px;padding:3px}.travel-pick{flex-basis:calc((100% - 14px)/3);font-size:9px;padding:3px}}
+@media(prefers-reduced-motion:reduce){.travel-pick{transition:none}}
+.travel-context-details summary{cursor:pointer;list-style:none;position:relative;padding-right:28px}
+.travel-context-details summary::-webkit-details-marker{display:none}
+.travel-context-details summary::after{content:'+';position:absolute;right:0;top:24px;font-size:25px;color:#b78a32}
+.travel-context-details[open] summary::after{content:'−'}
+.travel-context-details .context-toggle{font-size:12px;color:#84918c}
+.travel-context-details .context-toggle::before{content:'点击展开'}
+.travel-context-details[open] .context-toggle::before{content:'点击收起'}
+.travel-compact .project-context{align-items:start}
+.travel-showcase .image-placeholder[role="button"]{cursor:zoom-in;transition:box-shadow .2s,transform .2s}
+.travel-showcase .image-placeholder[role="button"]:hover{transform:translateY(-3px);box-shadow:0 8px 18px #6a786d26}
+.travel-showcase .image-placeholder[role="button"]:focus-visible,.travel-context-details summary:focus-visible{outline:2px solid #b78a32;outline-offset:4px}
+.travel-image-viewer{width:min(1100px,94vw);max-width:94vw;max-height:94vh;padding:18px;border:1px solid #e1dfd3;border-radius:16px;background:#faf8f1;color:#354352;box-shadow:0 20px 70px #18232e55}
+.travel-image-viewer::backdrop{background:#273644aa;backdrop-filter:blur(7px)}
+.travel-image-close{display:block;margin:0 0 12px auto;border:0;padding:8px;background:transparent;color:inherit;cursor:pointer;font:inherit}
+.travel-image-viewer>img{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;border-radius:6px}
+
+/* Two-column project plates with a compact editorial heading. */
+.travel-compact .travel-showcase .nine-images{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.travel-compact .travel-selection{position:sticky;top:24px;height:min(var(--rail-height,520px),68vh)}
+.travel-compact .gallery-heading{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px 20px;text-align:left;padding:0 0 18px;margin-bottom:24px;border-bottom:1px solid #d9dfd8}
+.travel-compact .gallery-heading .script-title{grid-column:1;grid-row:1;margin:0;font-family:"Arial Rounded MT Bold","Microsoft YaHei",sans-serif;font-size:clamp(28px,3.8vw,40px);font-style:normal;font-weight:800;letter-spacing:.025em;line-height:1.25}
+.travel-compact .gallery-heading .script-title .color-text{padding:0}
+.travel-compact .gallery-heading .year{grid-column:2;grid-row:1 / span 2;margin:0;padding:6px 0;font-size:13px;letter-spacing:.14em;align-self:center}
+.travel-compact .gallery-heading>p{grid-column:1;grid-row:2;margin:0;font-size:11px;letter-spacing:.15em;color:#87938e}
+@media(max-width:650px){.travel-compact .travel-showcase .nine-images{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.travel-compact .travel-selection{top:14px;height:min(var(--rail-height,380px),60vh)}.travel-compact .gallery-heading{margin-bottom:18px;padding-bottom:14px}}
