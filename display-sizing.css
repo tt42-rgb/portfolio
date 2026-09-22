@@ -1,0 +1,22 @@
+/* Bounded desktop layout; retain the existing artwork and mobile flow. */
+:root{--portfolio-width:1440px;--portfolio-gutter:clamp(20px,4vw,64px)}
+main{width:100%;max-width:var(--portfolio-width);margin-inline:auto}
+main>section{padding:80px var(--portfolio-gutter)}
+.station-nav{position:relative;padding:18px max(var(--portfolio-gutter),calc((100% - var(--portfolio-width))/2 + var(--portfolio-gutter)));min-height:78px;gap:24px}
+.station-nav nav{font-size:15px;gap:clamp(16px,2vw,30px);flex-wrap:wrap}
+.station-nav nav a{padding-block:8px}
+.hero{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);min-height:680px;gap:clamp(30px,4vw,64px);padding-top:64px!important;padding-bottom:96px!important}
+.hero h1{font-size:clamp(44px,4.5vw,68px);line-height:1.22;letter-spacing:-1px}
+.hero p{font-size:17px;max-width:490px}
+.world{width:100%;max-width:600px;justify-self:center}
+.hero-meta{font-size:14px;gap:16px}
+.about,.works{gap:clamp(24px,4vw,56px)}
+.process{grid-template-columns:1fr;gap:24px}
+.process-title{max-width:680px}
+.other-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px}
+.other-card img{height:auto;aspect-ratio:3/2;object-fit:cover}
+.other-info h3{font-size:24px}.other-info p{font-size:16px}
+main>.contact{margin:24px var(--portfolio-gutter) 64px;padding:40px}
+@media(min-width:701px) and (max-width:1000px){.hero{min-height:580px}.hero h1{font-size:44px}.station-nav{gap:14px}.station-nav nav{font-size:13px;gap:14px}.series-info{padding:16px}}
+@media(max-width:700px){main>section{padding:56px 20px}.station-nav{padding:14px 20px;gap:10px}.station-nav nav{width:100%;font-size:12px;gap:8px;justify-content:space-between}.hero{grid-template-columns:1fr;min-height:0;padding-top:40px!important;padding-bottom:100px!important;gap:48px}.hero h1{font-size:clamp(36px,8.5vw,54px)}.hero p{font-size:16px}.world{width:85%;max-width:430px}.hero-meta{font-size:12px;gap:12px}.other-grid{gap:24px 12px}.other-info h3{font-size:19px}.other-info p{font-size:14px}.other-card img{aspect-ratio:1}.process{padding:25px;gap:20px}main>.contact{margin:15px 20px 45px;padding:30px}}
+@media(max-width:420px){.other-grid{grid-template-columns:1fr}.other-card img{aspect-ratio:3/2}}
