@@ -1,0 +1,21 @@
+/* Explicit closed state also works in older iOS / WeChat engines. */
+dialog:not([open]){display:none!important}
+.portfolio-fallback-dialog[open]{display:block;position:fixed;z-index:10002;top:3vh;bottom:auto;left:0;right:0;margin:0 auto;max-height:94vh;max-width:94vw;box-sizing:border-box;overflow:auto;animation:none!important;transform:none!important;box-shadow:0 0 0 100vmax rgba(36,51,68,.65)}
+.portfolio-fallback-dialog.activity-dialog[open],.portfolio-fallback-dialog.merch-dialog[open],.portfolio-fallback-dialog.exhibition-dialog[open]{display:flex;flex-direction:column;height:90vh;overflow:hidden}
+html.portfolio-modal-open{overflow:hidden}
+@media(max-width:700px){
+ html{scroll-behavior:auto;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+ body{overflow-x:hidden}
+ main,main>section,.process-item>div,.case-intro>div,.contact-info{min-width:0}
+ .station-nav nav a{min-height:40px;display:flex;align-items:center;white-space:nowrap}
+ .brand b{font-family:Arial,sans-serif;font-variant-emoji:text}
+ .world{aspect-ratio:1/1}.planet{height:85%;flex-shrink:0}
+ .world .world-note{max-width:100%}
+ .contact-info{overflow-wrap:anywhere;word-break:break-word}
+ dialog[open]{max-height:90vh;max-height:90dvh;max-width:94vw;-webkit-overflow-scrolling:touch;animation:none!important}
+ .activity-dialog[open],.merch-dialog[open],.exhibition-dialog[open]{height:88vh;height:88dvh}
+ .activity-page,.merch-page,.exhibition-page{flex-shrink:0}
+ .activity-track,.merch-track,.exhibition-track,.emoji-track,.process-large-track{-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+ .activity-close,.merch-close,.emoji-close,.exhibition-close,.process-close,.product-video-close{min-height:44px;flex-shrink:0}
+ .activity-page header p,.merch-page header p{overflow-wrap:break-word}
+}

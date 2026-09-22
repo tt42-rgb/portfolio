@@ -1,0 +1,105 @@
+.collection-page main{max-width:1060px;padding:35px 32px 70px}
+.collection-page .project-heading{text-align:center;max-width:880px;margin:auto;padding:30px 0 45px}
+.collection-page h1{font-size:clamp(30px,4.5vw,52px);line-height:1.4}
+.collection-section{margin:30px auto 100px;max-width:900px}
+.collection-section>header{display:block;padding:0 0 24px;background:none;border-bottom:1px solid #d9d9d0;margin-bottom:28px}
+.collection-section h2{font-size:28px;margin:8px 0 12px}
+.collection-section p{line-height:1.9;color:#65727b}
+.section-no{font-size:12px;letter-spacing:3px;color:#82918f}
+.art-slot{margin:0;min-width:0;aspect-ratio:4/3;border:1px dashed #cbd2ce;background:#fffdf8;display:flex;align-items:center;justify-content:center;border-radius:8px;color:#88928e;font-size:13px;overflow:hidden}
+.art-slot.has-artwork{aspect-ratio:auto;display:block;border:0;background:white}
+.art-slot img{display:block;width:100%;height:auto}
+.brand-grid{display:grid;gap:18px;align-items:start}
+.brand-one{grid-template-columns:repeat(2,minmax(0,1fr))}
+.brand-one .art-slot:first-child{grid-column:1/-1;aspect-ratio:2/1}
+.brand-one .art-slot.has-artwork:first-child{aspect-ratio:auto}
+.brand-two{grid-template-columns:1.3fr 1fr}
+.brand-two .art-slot:first-child{grid-row:span 2;aspect-ratio:3/4}
+.brand-two .art-slot.has-artwork:first-child{aspect-ratio:auto}
+.brand-three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.brand-three .art-slot:nth-child(2){margin-top:36px}
+.brand-three .art-slot:last-child{grid-column:1/-1;max-width:650px;width:100%;justify-self:center}
+.story-list{display:grid;gap:32px}
+.story-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:30px;align-items:center;padding-bottom:30px;border-bottom:1px solid #deded5}
+.story-copy h3{font-size:20px;margin:10px 0}.story-copy p{font-size:15px}
+.nature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
+@media(max-width:650px){.collection-page main{padding:24px 20px}.story-row{grid-template-columns:1fr;gap:12px}.brand-two,.brand-three{grid-template-columns:1fr 1fr}.brand-two .art-slot:first-child{grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}.brand-three .art-slot:nth-child(2){margin-top:0}.collection-section{margin-bottom:65px}.nature-grid{gap:12px}}
+
+/* Birdsong project introduction, with a separate small illustration slot. */
+.collection-section>header.brand-intro-green{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:26px 30px;background:#e8eee1;border:1px solid #d4dfca;border-radius:14px}
+.brand-intro-green>div{min-width:0}
+.brand-intro-green .brand-mini-art{flex:0 0 112px;width:112px;height:112px;aspect-ratio:1;background:#f5f8ef;border-color:#b8c7ad;font-size:12px}
+.brand-intro-green .brand-mini-art img{width:100%;height:100%;object-fit:contain}
+.brand-three .art-slot:nth-child(3n + 2):not(:last-child){margin-top:36px}
+@media(max-width:650px){.collection-section>header.brand-intro-green{padding:20px;gap:16px}.brand-intro-green .brand-mini-art{flex-basis:80px;width:80px;height:80px}.brand-three .art-slot:nth-child(3n + 2):not(:last-child){margin-top:0}}
+
+/* Natural artwork proportions and a transparent header sticker. */
+.brand-intro-green .brand-mini-art,.brand-intro-green .brand-mini-art.has-artwork{height:auto;aspect-ratio:auto;background:transparent;border:0;border-radius:0;overflow:visible;box-shadow:none}
+.brand-intro-green .brand-mini-art img{display:block;width:100%;height:auto;object-fit:contain}
+.brand-two{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.brand-two .art-slot:first-child{grid-row:auto;grid-column:auto;aspect-ratio:4/3}
+.brand-two .art-slot.has-artwork,.brand-two .art-slot.has-artwork:first-child{aspect-ratio:auto;height:auto}
+.brand-three{grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;align-items:start}
+.brand-three .art-slot,.brand-three .art-slot:nth-child(3n + 2):not(:last-child),.brand-three .art-slot:last-child{grid-column:span 2;margin-top:0;max-width:none;width:100%;justify-self:stretch}
+.brand-three .art-slot:nth-child(8n + 1),.brand-three .art-slot:nth-child(8n + 2){grid-column:span 3}
+@media(max-width:650px){.brand-three{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.brand-three .art-slot,.brand-three .art-slot:nth-child(8n + 1),.brand-three .art-slot:nth-child(8n + 2),.brand-three .art-slot:last-child{grid-column:auto}.brand-two{gap:12px}}
+@media(max-width:420px){.brand-two{grid-template-columns:1fr}}
+
+/* Selected research sheets share one compact area and consistent safe margins. */
+.brand-three.brand-grouped>.art-slot{grid-column:span 2;margin:0;width:100%;max-width:none}
+.brand-three.brand-grouped>.art-slot:first-child{grid-column:1/-1;width:min(100%,440px);justify-self:center;margin-bottom:8px}
+.brand-detail-group{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:26px;margin-bottom:12px;border:1px solid #e4e5df;border-radius:14px;background:#ffffff80}
+.brand-three.brand-grouped .brand-detail-group>.art-slot{grid-column:auto;margin:0;max-width:none;width:100%;aspect-ratio:1.414;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
+.brand-three.brand-grouped .brand-detail-group>.art-slot img{width:100%;height:100%;object-fit:contain}
+.brand-two>.art-slot:first-child{width:76%;justify-self:center;align-self:center}
+@media(max-width:650px){.brand-three.brand-grouped>.art-slot{grid-column:auto}.brand-three.brand-grouped>.art-slot:first-child{grid-column:1/-1}.brand-detail-group{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}.brand-two>.art-slot:first-child{width:82%}}
+
+/* Illustration pairs and the first collaboration's detail matrix. */
+.story-list.story-paired{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px;align-items:start}
+.story-paired .story-row{display:flex;flex-direction:column;align-items:stretch;gap:16px;min-width:0;height:100%}
+.story-paired .story-copy{padding:0 4px 12px}
+.nature-feature{grid-column:1/-1;display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:center;min-width:0;width:100%;margin:0 auto 12px}
+.nature-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:center}
+.nature-feature>.art-slot{aspect-ratio:4/5}
+.nature-feature>.art-slot.has-artwork{aspect-ratio:auto}
+.nature-details .art-slot{font-size:11px;text-align:center}
+@media(max-width:650px){.story-list.story-paired{gap:24px 14px}.story-paired .story-copy h3{font-size:17px}.nature-feature{grid-template-columns:1fr;gap:16px}.nature-feature>.art-slot{width:min(100%,420px);justify-self:center}.nature-details{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:420px){.story-list.story-paired{grid-template-columns:1fr}.nature-details{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Compact illustration rows, concept sheets and aligned collaboration panels. */
+.story-list.story-paired{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}
+.concept-safe{padding:24px;border:1px solid #e1e3db;border-radius:14px}
+.concept-top{display:grid;grid-template-columns:minmax(0,3fr) minmax(140px,1fr);gap:28px;align-items:center}
+.concept-four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start}
+.concept-top h3{font-size:22px;line-height:1.7;margin:0;text-align:right}
+.concept-six{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:24px;align-items:start}
+.concept-safe .art-slot{font-size:11px;text-align:center}
+.nature-feature{align-items:stretch}
+.nature-feature>.art-slot,.nature-feature>.art-slot.has-artwork{aspect-ratio:auto;height:100%;min-height:0;position:relative}
+.nature-feature>.art-slot.has-artwork img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.nature-details{align-items:stretch}
+.nature-details .art-slot,.nature-details .art-slot.has-artwork{aspect-ratio:4/3;display:flex}
+.nature-details .art-slot img{width:100%;height:100%;object-fit:contain}
+@media(max-width:650px){.story-list.story-paired{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px}.concept-safe{padding:16px}.concept-top{grid-template-columns:1fr;gap:16px}.concept-top h3{text-align:left;font-size:20px}.concept-four{grid-template-columns:repeat(2,minmax(0,1fr))}.concept-six{grid-template-columns:repeat(3,minmax(0,1fr))}.nature-feature>.art-slot,.nature-feature>.art-slot.has-artwork{height:auto;aspect-ratio:4/3}}
+@media(max-width:420px){.story-list.story-paired{grid-template-columns:1fr}}
+
+/* Transparent, centered character cutouts. */
+.concept-four{align-items:center}
+.concept-four .art-slot,.concept-four .art-slot.has-artwork{display:flex;align-items:center;justify-content:center;background:transparent;border:0;border-radius:0;aspect-ratio:4/3;height:auto;box-shadow:none}
+.concept-four .art-slot img{width:100%;height:100%;object-fit:contain;object-position:center}
+.concept-caption{text-align:right;align-self:center}
+.concept-caption>p{font-size:13px;letter-spacing:2px;margin:0 0 8px;color:#79877f}
+.concept-caption h3{margin:0}
+@media(max-width:650px){.concept-caption{text-align:left}}
+
+/* Individually expandable illustration stories. */
+.story-details summary{list-style:none;cursor:pointer;position:relative;padding-right:25px}
+.story-details summary::-webkit-details-marker{display:none}
+.story-details summary h3{margin-bottom:8px}
+.story-details summary::after{content:'+';position:absolute;right:0;top:0;color:#b58e46;font-size:22px}
+.story-details[open] summary::after{content:'−'}
+.story-details .story-toggle{display:block;font-size:11px;color:#87938e;line-height:1.7}
+.story-details .story-toggle::before{content:'点击展开故事'}
+.story-details[open] .story-toggle::before{content:'点击收起故事'}
+.story-details summary:focus-visible{outline:2px solid #b58e46;outline-offset:5px;border-radius:3px}
+.story-details>p{margin-top:14px}
