@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="mobile-compat.js?v=20260922" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FIRST SMILE｜旺崽星球</title>
+
+<style>
+
+/* =========================
+   基础
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    font-family:
+        system-ui,
+        -apple-system,
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+
+    overflow-x:hidden;
+}
+
+
+/* =========================
+   返回区域
+========================= */
+
+.top-bar{
+    width:100%;
+    padding:25px 32px;
+}
+
+.breadcrumb{
+    font-size:10px;
+    color:#555;
+    letter-spacing:.12em;
+    margin-bottom:13px;
+}
+
+.back-btn{
+    display:inline-block;
+
+    color:#888;
+    text-decoration:none;
+
+    font-size:12px;
+
+    transition:.3s;
+}
+
+.back-btn:hover{
+    color:#fff;
+}
+
+
+/* =========================
+   页面
+========================= */
+
+.container{
+    width:100%;
+    padding:55px 0 100px;
+}
+
+
+/* =========================
+   标题
+========================= */
+
+.title-area{
+    text-align:center;
+    padding:0 20px;
+}
+
+.series-label{
+    font-size:10px;
+    color:#555;
+    letter-spacing:.16em;
+
+    margin-bottom:25px;
+}
+
+.big-title{
+    font-size:clamp(65px,8vw,125px);
+    font-weight:400;
+
+    line-height:.95;
+    letter-spacing:.08em;
+
+    margin-bottom:30px;
+}
+
+.intro{
+    max-width:700px;
+
+    margin:0 auto;
+
+    color:#888;
+
+    font-size:14px;
+    line-height:2;
+}
+
+
+/* =========================
+   轮播展示区
+========================= */
+
+.slider-section{
+    width:100%;
+
+    margin-top:65px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+/* 图片轨道 */
+
+.slider-track{
+    display:flex;
+    align-items:center;
+
+    gap:28px;
+
+    transition:
+        transform .75s
+        cubic-bezier(.22,1,.36,1);
+
+    will-change:transform;
+}
+
+
+/* =========================
+   单张图片
+========================= */
+
+.slide{
+    flex:0 0 clamp(230px,25vw,390px);
+
+    height:480px;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    background:#111;
+
+    cursor:pointer;
+
+    position:relative;
+
+    opacity:.35;
+
+    transform:scale(.82);
+
+    transition:
+        transform .65s cubic-bezier(.22,1,.36,1),
+        opacity .5s ease,
+        filter .5s ease;
+}
+
+
+/* 图片 */
+
+.slide img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:
+        transform .7s cubic-bezier(.22,1,.36,1);
+}
+
+
+/* 当前图片 */
+
+.slide.active{
+    opacity:1;
+
+    transform:scale(1);
+
+    z-index:5;
+}
+
+
+/* 当前图片轻微放大 */
+
+.slide.active:hover img{
+    transform:scale(1.025);
+}
+
+
+/* 左右相邻图片 */
+
+.slide.near{
+    opacity:.65;
+
+    transform:scale(.9);
+}
+
+
+/* =========================
+   左右按钮
+========================= */
+
+.slider-arrow{
+    position:absolute;
+
+    top:50%;
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(10px);
+
+    color:#fff;
+
+    font-size:19px;
+
+    cursor:pointer;
+
+    z-index:20;
+
+    transform:translateY(-50%);
+
+    transition:.3s;
+}
+
+.slider-arrow:hover{
+    background:#fff;
+    color:#000;
+}
+
+.slider-arrow.prev{
+    left:35px;
+}
+
+.slider-arrow.next{
+    right:35px;
+}
+
+
+/* =========================
+   小圆点
+========================= */
+
+.dots{
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:45px;
+}
+
+
+.dot{
+    width:6px;
+    height:6px;
+
+    border:0;
+
+    padding:0;
+
+    border-radius:50%;
+
+    background:#444;
+
+    cursor:pointer;
+
+    transition:
+        width .35s ease,
+        background .35s ease,
+        transform .35s ease;
+}
+
+
+/* 当前状态 */
+
+.dot.active{
+    width:22px;
+
+    border-radius:20px;
+
+    background:#fff;
+}
+
+
+/* =========================
+   当前页码
+========================= */
+
+.counter{
+    margin-top:18px;
+
+    text-align:center;
+
+    font-size:10px;
+
+    letter-spacing:.15em;
+
+    color:#555;
+}
+
+
+/* =========================
+   底部
+========================= */
+
+.footer{
+    width:min(1100px,90vw);
+
+    margin:100px auto 0;
+
+    padding-top:25px;
+
+    border-top:1px solid #222;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#555;
+
+    font-size:10px;
+
+    letter-spacing:.1em;
+}
+
+
+/* =========================
+   手机
+========================= */
+
+@media(max-width:700px){
+
+    .top-bar{
+        padding:20px;
+    }
+
+    .container{
+        padding-top:40px;
+    }
+
+    .big-title{
+        font-size:50px;
+    }
+
+    .intro{
+        font-size:13px;
+        padding:0 15px;
+    }
+
+    .slider-section{
+        margin-top:50px;
+    }
+
+    .slider-track{
+        gap:16px;
+    }
+
+    .slide{
+        flex-basis:75vw;
+        height:430px;
+    }
+
+    .slider-arrow{
+        width:40px;
+        height:40px;
+    }
+
+    .slider-arrow.prev{
+        left:12px;
+    }
+
+    .slider-arrow.next{
+        right:12px;
+    }
+
+}
+
+</style>
+<link rel="stylesheet" href="series-refined.css">
+<link rel="stylesheet" href="paper-theme.css">
+<style>.character-description{white-space:pre-line}</style>
+<link rel="stylesheet" href="mobile-compat.css?v=20260922">
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     返回
+========================= -->
+
+<header class="top-bar">
+
+    <div class="breadcrumb">
+        旺崽星球 / 角色系列 / FIRST SMILE
+    </div>
+
+    <a
+        href="index.html#wangzai"
+        class="back-btn"
+    >
+        ← 返回旺崽星球
+    </a>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- =========================
+     标题
+========================= -->
+
+<section class="title-area">
+
+    <div class="series-label">
+        旺崽星球 · 角色系列 02
+    </div>
+
+    <h1 class="big-title">
+        FIRST SMILE
+    </h1>
+
+    <p class="intro">
+        IP角色完整设计流程，从草稿构思、造型推敲、
+        配色方案到最终定稿。
+        下面七张画面展示系列角色及视觉设计。
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     七张图轮播
+========================= -->
+
+<section class="slider-section" id="slider">
+
+
+    <!-- 左按钮 -->
+
+    <button
+        class="slider-arrow prev"
+        type="button"
+        aria-label="上一张"
+    >
+        ←
+    </button>
+
+
+    <!-- 图片 -->
+
+    <div class="slider-track" id="sliderTrack">
+
+
+        <div class="slide active" data-card="images/smile-card-01.png" data-name="HUAHUA-ZAI" data-description="生日：7.15　星座：巨蟹座&#10;MBTI：INFJ&#10;&#10;HUAHUA是旺崽星球的情感咨询师，负责化解星球上的矛盾。&#10;喜欢Cosplay，最爱吃的食物是西瓜。&#10;但不喜欢裤子，最喜欢裙子！">
+            <img
+                src="images/smile-01.png"
+                alt="FIRST SMILE 01"
+            >
+        </div>
+
+
+        <div class="slide" data-card="images/smile-card-02.png" data-name="MEIMEI-ZAI" data-description="生日：4.12　星座：白羊座&#10;MBTI：ESTP&#10;&#10;MEIMEI是旺崽星球的赛事解说员，是宠物运动会的直播担当。&#10;它喜欢表演“空中飞人”，讲话必用麦克风。&#10;但不喜欢说话被打断，听我的！">
+            <img
+                src="images/smile-02.png"
+                alt="FIRST SMILE 02"
+            >
+        </div>
+
+
+        <div class="slide" data-card="images/smile-card-03.png" data-name="NIUNIU-ZAI" data-description="生日：5.21　星座：双子座&#10;MBTI：ENFP&#10;&#10;NIUNIU是旺崽星球喜剧俱乐部的“台柱子”，负责疏导人类的“低落情绪”。&#10;它喜欢创造表情包，常和自己对话，还喜欢小铃铛。&#10;不喜欢吃黄瓜，拒绝！">
+            <img
+                src="images/smile-03.png"
+                alt="FIRST SMILE 03"
+            >
+        </div>
+
+
+        <div class="slide" data-card="images/smile-card-04.png" data-name="JIUJIU-ZAI" data-description="生日：11.25　星座：射手座&#10;MBTI：ESFP&#10;&#10;JIUJIU是旺崽星球的社区疗愈官，负责陪护伤心的宠物。&#10;喜欢唱歌但总是跑调，最爱的饰品是红色蝴蝶结。&#10;不喜欢早起，达咩！">
+            <img
+                src="images/smile-04.png"
+                alt="FIRST SMILE 04"
+            >
+        </div>
+
+
+        <div class="slide" data-card="images/smile-card-05.png" data-name="LAN-ZAI" data-description="生日：10.25　星座：天蝎座&#10;MBTI：ISTP&#10;&#10;LAN是旺崽星球的仓库管理员，白天睡觉，晚上负责看守零食仓库。&#10;它喜欢拖鞋和纸箱，最喜欢宅家，也爱打游戏。&#10;但有起床气，不喜欢旅游，不去！">
+            <img
+                src="images/smile-05.png"
+                alt="FIRST SMILE 05"
+            >
+        </div>
+
+
+        <div class="slide" data-card="images/smile-card-06.png" data-name="JIN-ZAI" data-description="生日：4.22　星座：金牛座&#10;MBTI：ISFP&#10;&#10;JIN是旺崽星球的冥想大师，负责测试星球上最舒适的“躺平产品”。&#10;特别喜欢天鹅绒垫子，最爱吃的食物是草莓。&#10;不喜欢有压力的工作，干不了！">
+            <img
+                src="images/smile-06.png"
+                alt="FIRST SMILE 06"
+            >
+        </div>
+
+
+        <div class="slide" data-card="images/smile-card-07.png" data-name="YINYIN·ZAI" data-description="生日：2.20　星座：双鱼座&#10;MBTI：INFP&#10;&#10;YINYIN是毛绒玩具设计顾问，凶猛的外形看起来很适合演示用玩具吓人。&#10;喜欢装凶狠地盯着小鸟，爱吓唬别人。&#10;不喜欢戴眼镜（虽然有点近视），哼！">
+            <img
+                src="images/smile-07.png"
+                alt="FIRST SMILE 07"
+            >
+        </div>
+
+
+    </div>
+
+
+    <!-- 右按钮 -->
+
+    <button
+        class="slider-arrow next"
+        type="button"
+        aria-label="下一张"
+    >
+        →
+    </button>
+
+
+</section>
+
+
+
+<!-- =========================
+     小圆点
+========================= -->
+
+<div class="dots" id="dots">
+
+    <button class="dot active" data-index="0"></button>
+    <button class="dot" data-index="1"></button>
+    <button class="dot" data-index="2"></button>
+    <button class="dot" data-index="3"></button>
+    <button class="dot" data-index="4"></button>
+    <button class="dot" data-index="5"></button>
+    <button class="dot" data-index="6"></button>
+
+</div>
+
+
+<div class="counter">
+
+    <span id="currentNumber">01</span>
+    /
+    <span>07</span>
+
+</div>
+
+
+
+<section class="character-copy" aria-live="polite" aria-atomic="true"><div class="character-kind">常规款 · 01</div><h2 class="character-name">角色名称待补充</h2><p class="character-description">角色介绍待补充</p></section>
+<footer class="footer">
+
+    <span>旺崽星球</span>
+
+    <span>FIRST SMILE</span>
+
+</footer>
+
+
+</main>
+
+
+
+<script src="series-refined.js"></script>
+
+
+<script src="paper-scatter.js" defer></script></body>
+</html>
