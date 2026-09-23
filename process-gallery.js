@@ -1,4 +1,5 @@
 (() => {
+ if(window.matchMedia('(max-width: 700px), (pointer: coarse)').matches)return;
  const dialog=document.createElement('dialog');dialog.className='process-viewer';dialog.setAttribute('aria-label','过程图片详情');
  dialog.innerHTML='<button type="button" class="process-close">返回封面 ×</button><h3>过程图片</h3><div class="process-large-track"></div><div class="process-controls"><button type="button" class="process-prev" aria-label="上一张">←</button><span>左右滑动查看三张图片</span><button type="button" class="process-next" aria-label="下一张">→</button></div>';
  document.body.append(dialog);const track=dialog.querySelector('.process-large-track');let source;
@@ -11,7 +12,7 @@
  dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();move(e.key==='ArrowLeft'?-1:1);}});
  dialog.addEventListener('close',()=>{source?.classList.remove('is-viewing');source?.focus();});
  document.querySelectorAll('[data-process]').forEach(tile=>{
- function open(){source=tile;tile.classList.add('is-viewing');observer.disconnect();track.replaceChildren();dialog.querySelector('h3').textContent=tile.dataset.process==='2-3'?'附加属性-迭代':tile.dataset.label+' · 细节';
+ function open(event){if(event)event.preventDefault();source=tile;tile.classList.add('is-viewing');observer.disconnect();track.replaceChildren();dialog.querySelector('h3').textContent=tile.dataset.process==='2-3'?'附加属性-迭代':tile.dataset.label+' · 细节';
  for(let i=1;i<=3;i++){const frame=document.createElement('div');frame.className='process-large-frame';frame.textContent=`细节图片 ${i} · 待补充`;const img=new Image();img.alt=`${tile.dataset.label} 细节 ${i}`;img.onload=()=>{frame.replaceChildren(img);if(tile.dataset.process==='2-3'){frame.subjectBounds=subjectBounds[i-1];frame.style.position='relative';frame.style.overflow='hidden';observer.observe(frame);fitSubject(frame);}};img.src=`images/process-${tile.dataset.process}-detail-${i}.png`;track.append(frame);}
  dialog.showModal();track.scrollLeft=0;
  }

@@ -1,4 +1,5 @@
 (() => {
+ if(window.matchMedia('(max-width: 700px), (pointer: coarse)').matches)return;
  const trigger=document.querySelector('[data-emoji-gallery]');if(!trigger)return;
  const titles=['表情包-已上线微信','风格化表情包','风格化组合群像'];
  const dialog=document.createElement('dialog');dialog.className='emoji-dialog';dialog.setAttribute('aria-label','表情包设定集');

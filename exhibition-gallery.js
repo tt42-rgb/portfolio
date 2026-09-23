@@ -1,4 +1,5 @@
 (() => {
+ if(window.matchMedia('(max-width: 700px), (pointer: coarse)').matches)return;
   const trigger = document.querySelector('[data-exhibition-gallery]');
   if (!trigger) return;
   const titles = Array.from({length:8}, (_,i) => ['展会展销', String(i + 1).padStart(2, '0') + ' / 08', i + 1]);

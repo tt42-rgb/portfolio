@@ -1,4 +1,5 @@
 (() => {
+ if(window.matchMedia('(max-width: 700px), (pointer: coarse)').matches)return;
  const trigger=document.querySelector('[data-product-video]');if(!trigger)return;
  const dialog=document.createElement('dialog');dialog.className='product-video-dialog';dialog.id='product-video';dialog.setAttribute('aria-labelledby','product-video-title');
  dialog.innerHTML='<button type="button" class="product-video-close">返回封面 ×</button><header><p>PRODUCT EXPLORATION</p><h2 id="product-video-title">其他产品衍生</h2></header><div class="product-video-stage"><div class="product-video-placeholder"><span aria-hidden="true">▷</span><p>产品视频 · 待补充</p></div><video controls playsinline preload="metadata" aria-label="其他产品衍生展示视频" hidden></video></div>';

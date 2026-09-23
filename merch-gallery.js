@@ -1,4 +1,5 @@
 (() => {
+ if(window.matchMedia('(max-width: 700px), (pointer: coarse)').matches)return;
   const trigger = document.querySelector('[data-merch-gallery]');
   if (!trigger) return;
   const titles = [
