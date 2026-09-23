@@ -25,7 +25,7 @@ slides.forEach((slide,index)=>{
  const placeholder=document.createElement('div');placeholder.className='card-placeholder';
  const label=document.createElement('strong');label.textContent=slide.dataset.name||`角色 ${String(index+1).padStart(2,'0')}`;
  const note=document.createElement('span');note.textContent='对应卡牌图片待补充';placeholder.append(label,note);slot.append(placeholder);
- if(slide.dataset.card){const cardImage=document.createElement('img');cardImage.alt=`角色 ${index+1} 卡牌`;cardImage.hidden=true;cardImage.addEventListener('load',()=>{placeholder.hidden=true;cardImage.hidden=false;});cardImage.addEventListener('error',()=>{placeholder.hidden=false;cardImage.hidden=true;});slot.append(cardImage);cardImage.src=slide.dataset.card;}
+ if(slide.dataset.card){const cardImage=document.createElement('img');cardImage.alt=`角色 ${index+1} 卡牌`;cardImage.hidden=true;cardImage.addEventListener('load',()=>{placeholder.hidden=true;cardImage.hidden=false;});cardImage.addEventListener('error',()=>{placeholder.hidden=false;cardImage.hidden=true;});slot.append(cardImage);cardImage.src=window.portfolioImageSource?window.portfolioImageSource(slide.dataset.card):slide.dataset.card;}
  const backHint=document.createElement('span');backHint.className='flip-hint';backHint.textContent='点击返回产品照片 ↻';back.append(slot,backHint);
  inner.append(front,back);slide.replaceChildren(inner);
  slide.tabIndex=0;slide.setAttribute('role','button');slide.setAttribute('aria-pressed','false');slide.setAttribute('aria-label',`翻转查看角色 ${index+1} 卡牌`);

@@ -41,7 +41,7 @@
     const img = new Image();
     img.alt = `集安行纪补充设定 ${i + 1}`;
     img.onload = () => pick.replaceChildren(img);
-    img.src = pick.dataset.travelImage;
+    img.src = window.portfolioImageSource ? window.portfolioImageSource(pick.dataset.travelImage) : pick.dataset.travelImage;
     pick.addEventListener('click', () => select(pick));
     pick.addEventListener('keydown', e => {
       if (!['ArrowDown', 'ArrowUp'].includes(e.key)) return;
