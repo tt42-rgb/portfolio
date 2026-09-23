@@ -19,17 +19,28 @@ slides.forEach((slide,index)=>{
  const inner=document.createElement('div');inner.className='flip-inner';
  const front=document.createElement('div');front.className='flip-front';
  const back=document.createElement('div');back.className='flip-back';back.setAttribute('aria-hidden','true');
- if(photo)front.append(photo);
+ if(photo){const picture=photo.closest('picture');if(picture){picture.style.display='block';picture.style.width='100%';picture.style.height='100%';front.append(picture);}else front.append(photo);}
  const hint=document.createElement('span');hint.className='flip-hint';hint.textContent='点击查看角色卡 ↻';front.append(hint);
  const slot=document.createElement('div');slot.className='card-art-slot';
  const placeholder=document.createElement('div');placeholder.className='card-placeholder';
  const label=document.createElement('strong');label.textContent=slide.dataset.name||`角色 ${String(index+1).padStart(2,'0')}`;
  const note=document.createElement('span');note.textContent='对应卡牌图片待补充';placeholder.append(label,note);slot.append(placeholder);
- if(slide.dataset.card){const cardImage=document.createElement('img');cardImage.alt=`角色 ${index+1} 卡牌`;cardImage.hidden=true;cardImage.addEventListener('load',()=>{placeholder.hidden=true;cardImage.hidden=false;});cardImage.addEventListener('error',()=>{placeholder.hidden=false;cardImage.hidden=true;});slot.append(cardImage);cardImage.src=window.portfolioImageSource?window.portfolioImageSource(slide.dataset.card):slide.dataset.card;}
+ let cardState='idle';
+ function loadCard(){
+  if(!slide.dataset.card||cardState==='loading'||cardState==='loaded')return;
+  cardState='loading';note.textContent='角色卡加载中…';
+  const cardImage=document.createElement('img');cardImage.alt=`角色 ${index+1} 卡牌`;cardImage.hidden=true;cardImage.decoding='async';slot.append(cardImage);
+  const timer=setTimeout(()=>fail(),30000);
+  function fail(){if(cardState!=='loading')return;cardState='error';clearTimeout(timer);cardImage.remove();placeholder.hidden=false;note.textContent='加载失败，请翻回后重试';}
+  cardImage.addEventListener('load',()=>{if(cardState!=='loading')return;cardState='loaded';clearTimeout(timer);placeholder.hidden=true;cardImage.hidden=false;});
+  cardImage.addEventListener('error',fail);
+  cardImage.src=window.portfolioImageSource?window.portfolioImageSource(slide.dataset.card):slide.dataset.card;
+ }
+
  const backHint=document.createElement('span');backHint.className='flip-hint';backHint.textContent='点击返回产品照片 ↻';back.append(slot,backHint);
  inner.append(front,back);slide.replaceChildren(inner);
  slide.tabIndex=0;slide.setAttribute('role','button');slide.setAttribute('aria-pressed','false');slide.setAttribute('aria-label',`翻转查看角色 ${index+1} 卡牌`);
- function flip(){if(current!==index)select(index);const flipped=slide.classList.toggle('is-flipped');slide.setAttribute('aria-pressed',String(flipped));slide.setAttribute('aria-label',flipped?`返回角色 ${index+1} 产品照片`:`翻转查看角色 ${index+1} 卡牌`);front.setAttribute('aria-hidden',String(flipped));back.setAttribute('aria-hidden',String(!flipped));}
+ function flip(){if(current!==index)select(index);const flipped=slide.classList.toggle('is-flipped');if(flipped)loadCard();slide.setAttribute('aria-pressed',String(flipped));slide.setAttribute('aria-label',flipped?`返回角色 ${index+1} 产品照片`:`翻转查看角色 ${index+1} 卡牌`);front.setAttribute('aria-hidden',String(flipped));back.setAttribute('aria-hidden',String(!flipped));}
  slide.addEventListener('click',flip);slide.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
 });
 dots.forEach((dot,index)=>dot.addEventListener('click',()=>select(index)));
